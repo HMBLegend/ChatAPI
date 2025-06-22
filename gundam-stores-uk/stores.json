@@ -1,0 +1,19 @@
+[
+    {
+      "name": "Japan Craft",
+      "location": "London",
+      "website": "https://www.japancraft.co.uk",
+      "types": ["HG", "MG", "PG"],
+      "inStore": true,
+      "online": true
+    },
+    {
+      "name": "Gundam Mad",
+      "location": "Online Only",
+      "website": "https://www.gundammad.co.uk",
+      "types": ["HG", "RG", "MG"],
+      "inStore": false,
+      "online": true
+    }
+  ]
+  
