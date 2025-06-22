@@ -2,18 +2,110 @@
     {
       "name": "Japan Craft",
       "location": "London",
+      "address": "123 Oxford Street, London, W1D 1BS",
+      "coordinates": [51.5074, -0.1278],
       "website": "https://www.japancraft.co.uk",
       "types": ["HG", "MG", "PG"],
       "inStore": true,
-      "online": true
+      "online": true,
+      "rating": 4.7,
+      "reviewCount": 156,
+      "reviews": [
+        "Excellent selection of Gundam kits, especially the Master Grade models. Staff are very knowledgeable!",
+        "Great prices and fast shipping. Highly recommend for any Gundam enthusiast.",
+        "Amazing store with rare kits. The Perfect Grade collection is impressive."
+      ],
+      "logo": "JC"
     },
     {
       "name": "Gundam Mad",
       "location": "Online Only",
+      "address": "Online Store",
+      "coordinates": [52.3555, -1.1743],
       "website": "https://www.gundammad.co.uk",
       "types": ["HG", "RG", "MG"],
       "inStore": false,
-      "online": true
+      "online": true,
+      "rating": 4.3,
+      "reviewCount": 89,
+      "reviews": [
+        "Fast delivery and good customer service. Great for beginners with HG kits.",
+        "Competitive prices and regular sales. Good selection of Real Grade models.",
+        "Reliable online store with good packaging to protect the kits."
+      ],
+      "logo": "GM"
+    },
+    {
+      "name": "Mecha World",
+      "location": "Manchester",
+      "address": "456 Deansgate, Manchester, M3 2FF",
+      "coordinates": [53.4808, -2.2426],
+      "website": "https://www.mechaworld.co.uk",
+      "types": ["HG", "RG", "MG", "PG"],
+      "inStore": true,
+      "online": true,
+      "rating": 4.8,
+      "reviewCount": 203,
+      "reviews": [
+        "Best Gundam store in Manchester! Huge selection and expert staff.",
+        "Amazing collection of Perfect Grade kits. Worth the visit!",
+        "Great prices and excellent customer service. My go-to store for all things Gundam."
+      ],
+      "logo": "MW"
+    },
+    {
+      "name": "Anime Central",
+      "location": "Birmingham",
+      "address": "789 New Street, Birmingham, B2 4BA",
+      "coordinates": [52.4862, -1.8904],
+      "website": "https://www.animecentral.co.uk",
+      "types": ["HG", "RG"],
+      "inStore": true,
+      "online": false,
+      "rating": 4.1,
+      "reviewCount": 67,
+      "reviews": [
+        "Good selection of High Grade and Real Grade kits. Friendly staff.",
+        "Nice local store for anime and Gundam fans. Prices are reasonable.",
+        "Small but well-stocked store. Great for beginners."
+      ],
+      "logo": "AC"
+    },
+    {
+      "name": "Gunpla Express",
+      "location": "Online Only",
+      "address": "Online Store",
+      "coordinates": [51.4543, -2.5879],
+      "website": "https://www.gunplaexpress.co.uk",
+      "types": ["HG", "MG", "PG"],
+      "inStore": false,
+      "online": true,
+      "rating": 4.5,
+      "reviewCount": 134,
+      "reviews": [
+        "Excellent online store with fast shipping and great prices.",
+        "Huge selection of Master Grade kits. Highly recommended!",
+        "Reliable service and good communication. Perfect for online shopping."
+      ],
+      "logo": "GE"
+    },
+    {
+      "name": "Model Masters",
+      "location": "Edinburgh",
+      "address": "321 Princes Street, Edinburgh, EH2 4BG",
+      "coordinates": [55.9533, -3.1883],
+      "website": "https://www.modelmasters.co.uk",
+      "types": ["HG", "RG", "MG"],
+      "inStore": true,
+      "online": true,
+      "rating": 4.6,
+      "reviewCount": 98,
+      "reviews": [
+        "Fantastic store in Edinburgh! Great selection and knowledgeable staff.",
+        "Excellent prices and good variety of kits. Highly recommend!",
+        "Best model shop in Scotland. Great for both beginners and experts."
+      ],
+      "logo": "MM"
     }
   ]
   
