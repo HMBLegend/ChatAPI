@@ -3,24 +3,40 @@ let allStores = [];
 let filteredStores = [];
 let map;
 let markers = [];
+let apiBaseUrl = 'http://localhost:3000/api'; // Backend API URL
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', function() {
   loadStores();
   initializeMap();
   setupEventListeners();
+  setupAdminPanel();
 });
 
-// Load stores data
+// Load stores data from backend API
 async function loadStores() {
   try {
-    const response = await fetch('stores.json');
+    const response = await fetch(`${apiBaseUrl}/stores`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
     allStores = await response.json();
     filteredStores = [...allStores];
     displayStores();
     updateMap();
+    updateStatusDisplay();
   } catch (error) {
     console.error('Error loading store data:', error);
+    // Fallback to local file if API is not available
+    try {
+      const localResponse = await fetch('stores.json');
+      allStores = await localResponse.json();
+      filteredStores = [...allStores];
+      displayStores();
+      updateMap();
+    } catch (localError) {
+      console.error('Error loading local store data:', localError);
+    }
   }
 }
 
@@ -48,6 +64,128 @@ function setupEventListeners() {
   // Rating filter
   const ratingFilter = document.getElementById('rating-filter');
   ratingFilter.addEventListener('change', filterStores);
+}
+
+// Setup admin panel functionality
+function setupAdminPanel() {
+  // Add admin panel to the page
+  const adminPanel = document.createElement('div');
+  adminPanel.className = 'admin-panel';
+  adminPanel.innerHTML = `
+    <div class="admin-header">
+      <h3>🛠️ Admin Panel</h3>
+      <button class="admin-toggle" onclick="toggleAdminPanel()">⚙️</button>
+    </div>
+    <div class="admin-content" style="display: none;">
+      <div class="admin-section">
+        <h4>Review Management</h4>
+        <button onclick="updateAllReviews()" class="admin-btn">🔄 Update All Reviews</button>
+        <button onclick="checkSystemStatus()" class="admin-btn">📊 System Status</button>
+      </div>
+      <div class="admin-section">
+        <h4>System Status</h4>
+        <div id="system-status">Loading...</div>
+      </div>
+    </div>
+  `;
+  
+  document.body.appendChild(adminPanel);
+}
+
+// Toggle admin panel visibility
+function toggleAdminPanel() {
+  const content = document.querySelector('.admin-content');
+  content.style.display = content.style.display === 'none' ? 'block' : 'none';
+}
+
+// Update all reviews via API
+async function updateAllReviews() {
+  try {
+    const button = event.target;
+    const originalText = button.textContent;
+    button.textContent = '⏳ Updating...';
+    button.disabled = true;
+    
+    const response = await fetch(`${apiBaseUrl}/stores/update-reviews`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    
+    const result = await response.json();
+    alert(`✅ ${result.message}`);
+    
+    // Reload stores to get updated data
+    await loadStores();
+    
+  } catch (error) {
+    console.error('Error updating reviews:', error);
+    alert('❌ Failed to update reviews. Check console for details.');
+  } finally {
+    const button = event.target;
+    button.textContent = originalText;
+    button.disabled = false;
+  }
+}
+
+// Check system status
+async function checkSystemStatus() {
+  try {
+    const response = await fetch(`${apiBaseUrl}/status`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    
+    const status = await response.json();
+    updateStatusDisplay(status);
+    
+  } catch (error) {
+    console.error('Error checking system status:', error);
+    updateStatusDisplay({ error: 'Failed to connect to backend' });
+  }
+}
+
+// Update status display
+function updateStatusDisplay(status = null) {
+  const statusDiv = document.getElementById('system-status');
+  if (!statusDiv) return;
+  
+  if (status && status.error) {
+    statusDiv.innerHTML = `
+      <div class="status-item error">❌ ${status.error}</div>
+    `;
+    return;
+  }
+  
+  if (status) {
+    statusDiv.innerHTML = `
+      <div class="status-item ${status.status === 'running' ? 'success' : 'error'}">
+        🔄 Status: ${status.status}
+      </div>
+      <div class="status-item">
+        🕒 Last Check: ${new Date(status.timestamp).toLocaleString()}
+      </div>
+      <div class="status-item ${status.autoFetchEnabled ? 'success' : 'warning'}">
+        🤖 Auto Fetch: ${status.autoFetchEnabled ? 'Enabled' : 'Disabled'}
+      </div>
+      <div class="status-item ${status.googleApiConfigured ? 'success' : 'warning'}">
+        🔍 Google API: ${status.googleApiConfigured ? 'Configured' : 'Not Configured'}
+      </div>
+      <div class="status-item ${status.yelpApiConfigured ? 'success' : 'warning'}">
+        📝 Yelp API: ${status.yelpApiConfigured ? 'Configured' : 'Not Configured'}
+      </div>
+    `;
+  } else {
+    statusDiv.innerHTML = `
+      <div class="status-item">📊 Backend: Connected</div>
+      <div class="status-item">📈 Stores Loaded: ${allStores.length}</div>
+    `;
+  }
 }
 
 // Debounce function to limit search frequency
@@ -123,6 +261,12 @@ function displayStores() {
 function createStoreElement(store) {
   const div = document.createElement('div');
   div.className = 'store';
+  
+  // Format last updated time
+  const lastUpdated = store.lastUpdated ? 
+    new Date(store.lastUpdated).toLocaleDateString() : 
+    'Unknown';
+  
   div.innerHTML = `
     <div class="store-header">
       <div class="store-logo">${store.logo}</div>
@@ -132,6 +276,7 @@ function createStoreElement(store) {
           <div class="stars">${generateStars(store.rating)}</div>
           <span class="rating-text">${store.rating} (${store.reviewCount} reviews)</span>
         </div>
+        ${store.lastUpdated ? `<div class="last-updated">🕒 Updated: ${lastUpdated}</div>` : ''}
       </div>
     </div>
     
@@ -156,10 +301,47 @@ function createStoreElement(store) {
     <div class="store-actions">
       <a href="${store.website}" target="_blank" class="visit-website">Visit Website</a>
       <button class="view-reviews" onclick="showReviews('${store.name}')">View Reviews</button>
+      <button class="update-reviews" onclick="updateStoreReviews('${store.name}')">🔄 Update</button>
     </div>
   `;
   
   return div;
+}
+
+// Update reviews for a specific store
+async function updateStoreReviews(storeName) {
+  try {
+    const storeId = storeName.toLowerCase().replace(/\s+/g, '-');
+    const button = event.target;
+    const originalText = button.textContent;
+    button.textContent = '⏳';
+    button.disabled = true;
+    
+    const response = await fetch(`${apiBaseUrl}/stores/${storeId}/update-reviews`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    
+    const result = await response.json();
+    console.log(`Updated ${storeName}:`, result);
+    
+    // Reload stores to get updated data
+    await loadStores();
+    
+  } catch (error) {
+    console.error('Error updating store reviews:', error);
+    alert('❌ Failed to update store reviews. Check console for details.');
+  } finally {
+    const button = event.target;
+    button.textContent = originalText;
+    button.disabled = false;
+  }
 }
 
 // Generate star rating display
@@ -190,14 +372,25 @@ function showReviews(storeName) {
         <div class="rating-summary">
           <div class="stars">${generateStars(store.rating)}</div>
           <span>${store.rating} out of 5 (${store.reviewCount} reviews)</span>
+          ${store.lastUpdated ? `<div class="last-updated">🕒 Last updated: ${new Date(store.lastUpdated).toLocaleString()}</div>` : ''}
         </div>
         <div class="reviews-list">
-          ${store.reviews.map(review => `
-            <div class="review-item">
-              <div class="stars">★★★★★</div>
-              <p>${review}</p>
-            </div>
-          `).join('')}
+          ${store.reviews && store.reviews.length > 0 ? 
+            store.reviews.map(review => `
+              <div class="review-item">
+                <div class="review-header">
+                  <div class="stars">${generateStars(review.rating || 5)}</div>
+                  <div class="review-meta">
+                    <span class="review-author">${review.author || 'Anonymous'}</span>
+                    <span class="review-source">${review.source || 'Customer'}</span>
+                    ${review.time ? `<span class="review-time">${new Date(review.time * 1000).toLocaleDateString()}</span>` : ''}
+                  </div>
+                </div>
+                <p>${review.text}</p>
+              </div>
+            `).join('') : 
+            '<div class="no-reviews">No reviews available yet.</div>'
+          }
         </div>
       </div>
     </div>
@@ -245,137 +438,170 @@ function updateMap() {
   }
 }
 
-// Add CSS for modal
-const modalStyles = `
-  .reviews-modal {
+// Add CSS for admin panel and enhanced modals
+const additionalStyles = `
+  .admin-panel {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-  }
-  
-  .modal-content {
+    top: 20px;
+    right: 20px;
     background: white;
     border-radius: 12px;
-    max-width: 600px;
-    width: 90%;
-    max-height: 80vh;
-    overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    z-index: 1000;
+    min-width: 300px;
+    max-width: 400px;
   }
   
-  .modal-header {
+  .admin-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem;
+    padding: 1rem;
     border-bottom: 1px solid #e9ecef;
     background: #f8f9fa;
+    border-radius: 12px 12px 0 0;
   }
   
-  .modal-header h3 {
+  .admin-header h3 {
     margin: 0;
+    font-size: 1rem;
     color: #2c3e50;
   }
   
-  .close-modal {
+  .admin-toggle {
     background: none;
     border: none;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     cursor: pointer;
-    color: #6c757d;
-    padding: 0;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
+    padding: 0.5rem;
+    border-radius: 6px;
     transition: background-color 0.3s ease;
   }
   
-  .close-modal:hover {
+  .admin-toggle:hover {
     background: #e9ecef;
   }
   
-  .modal-body {
-    padding: 1.5rem;
-    overflow-y: auto;
-    max-height: 60vh;
-  }
-  
-  .rating-summary {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #e9ecef;
-  }
-  
-  .reviews-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  .review-item {
+  .admin-content {
     padding: 1rem;
-    background: #f8f9fa;
-    border-radius: 8px;
-    border-left: 4px solid #667eea;
   }
   
-  .review-item .stars {
+  .admin-section {
+    margin-bottom: 1rem;
+  }
+  
+  .admin-section h4 {
+    margin: 0 0 0.5rem 0;
+    color: #2c3e50;
+    font-size: 0.9rem;
+  }
+  
+  .admin-btn {
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .admin-btn:hover {
+    background: #5a6fd8;
+  }
+  
+  .admin-btn:disabled {
+    background: #6c757d;
+    cursor: not-allowed;
+  }
+  
+  .status-item {
+    padding: 0.25rem 0;
+    font-size: 0.8rem;
+    border-radius: 4px;
+    margin-bottom: 0.25rem;
+  }
+  
+  .status-item.success {
+    color: #28a745;
+  }
+  
+  .status-item.warning {
+    color: #ffc107;
+  }
+  
+  .status-item.error {
+    color: #dc3545;
+  }
+  
+  .last-updated {
+    font-size: 0.8rem;
+    color: #6c757d;
+    margin-top: 0.25rem;
+  }
+  
+  .update-reviews {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .update-reviews:hover {
+    background: #218838;
+  }
+  
+  .update-reviews:disabled {
+    background: #6c757d;
+    cursor: not-allowed;
+  }
+  
+  .review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 0.5rem;
   }
   
-  .review-item p {
-    margin: 0;
-    color: #555;
-    line-height: 1.5;
+  .review-meta {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: #6c757d;
   }
   
-  .no-results {
-    text-align: center;
-    padding: 2rem;
-    color: #6c757d;
+  .review-author {
+    font-weight: 600;
+  }
+  
+  .review-source {
+    background: #e3f2fd;
+    color: #1976d2;
+    padding: 0.1rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.7rem;
+  }
+  
+  .review-time {
     font-style: italic;
   }
   
-  .map-popup {
+  .no-reviews {
     text-align: center;
-  }
-  
-  .map-popup h4 {
-    margin: 0 0 0.5rem 0;
-    color: #2c3e50;
-  }
-  
-  .map-popup p {
-    margin: 0.25rem 0;
-    color: #555;
-  }
-  
-  .map-popup a {
-    display: inline-block;
-    margin-top: 0.5rem;
-    padding: 0.5rem 1rem;
-    background: #667eea;
-    color: white;
-    text-decoration: none;
-    border-radius: 6px;
-    font-size: 0.9rem;
+    color: #6c757d;
+    font-style: italic;
+    padding: 2rem;
   }
 `;
 
-// Inject modal styles
-const styleSheet = document.createElement('style');
-styleSheet.textContent = modalStyles;
-document.head.appendChild(styleSheet);
+// Inject additional styles
+const additionalStyleSheet = document.createElement('style');
+additionalStyleSheet.textContent = additionalStyles;
+document.head.appendChild(additionalStyleSheet);
