@@ -168,7 +168,7 @@ async function updateStoreReviews(store) {
     let newRating = store.rating;
     let newReviewCount = store.reviewCount;
 
-    // Try Google Places API first
+    // Try Google Places API only
     const googlePlace = await findGooglePlace(store.name, store.location);
     if (googlePlace) {
       const googleReviews = await getGoogleReviews(googlePlace.place_id);
@@ -180,11 +180,8 @@ async function updateStoreReviews(store) {
       }
     }
 
-    // Try Yelp API as backup
-    if (newReviews.length === 0) {
-      const yelpReviews = await getYelpReviews(store.name, store.location);
-      newReviews = [...newReviews, ...yelpReviews];
-    }
+    // Do NOT fetch from Yelp or any other source
+    // (Yelp fallback removed)
 
     // Update store with new reviews
     if (newReviews.length > 0) {
@@ -314,7 +311,7 @@ if (process.env.AUTO_FETCH_REVIEWS === 'true') {
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`🚀 Gundam Stores Backend running on port ${PORT}`);
+  console.log(`�� Gundam Stores Backend running on port ${PORT}`);
   console.log(`📊 API available at http://localhost:${PORT}/api`);
   console.log(`🌐 Website available at http://localhost:${PORT}`);
   
