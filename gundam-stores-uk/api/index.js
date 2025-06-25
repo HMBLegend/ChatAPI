@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3000;
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static('.'));
+app.use(express.static(path.join(__dirname, '../public')));
 
 // Store data file path
 const STORES_FILE = path.join(__dirname, '../stores.json');
@@ -209,7 +209,7 @@ app.get('/api/status', (req, res) => {
   });
 });
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../index.html'));
+  res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 // Remove listen() for Vercel compatibility
 // module.exports = app for Vercel
