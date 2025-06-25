@@ -1,363 +1,591 @@
 [
-    {
-      "name": "Japan Craft",
-      "location": "London",
-      "address": "123 Oxford Street, London, W1D 1BS",
-      "coordinates": [51.5074, -0.1278],
-      "website": "https://www.japancraft.co.uk",
-      "types": ["HG", "MG", "PG"],
-      "inStore": true,
-      "online": true,
-      "rating": 4.7,
-      "reviewCount": 156,
-      "reviews": [
-        "Excellent selection of Gundam kits, especially the Master Grade models. Staff are very knowledgeable!",
-        "Great prices and fast shipping. Highly recommend for any Gundam enthusiast.",
-        "Amazing store with rare kits. The Perfect Grade collection is impressive."
-      ],
-      "logo": "JC"
-    },
-    {
-      "name": "Gundam Mad",
-      "location": "Online Only",
-      "address": "Online Store",
-      "coordinates": [52.3555, -1.1743],
-      "website": "https://www.gundammad.co.uk",
-      "types": ["HG", "RG", "MG"],
-      "inStore": false,
-      "online": true,
-      "rating": 4.3,
-      "reviewCount": 89,
-      "reviews": [
-        "Fast delivery and good customer service. Great for beginners with HG kits.",
-        "Competitive prices and regular sales. Good selection of Real Grade models.",
-        "Reliable online store with good packaging to protect the kits."
-      ],
-      "logo": "GM"
-    },
-    {
-      "name": "Mecha World",
-      "location": "Manchester",
-      "address": "456 Deansgate, Manchester, M3 2FF",
-      "coordinates": [53.4808, -2.2426],
-      "website": "https://www.mechaworld.co.uk",
-      "types": ["HG", "RG", "MG", "PG"],
-      "inStore": true,
-      "online": true,
-      "rating": 4.8,
-      "reviewCount": 203,
-      "reviews": [
-        "Best Gundam store in Manchester! Huge selection and expert staff.",
-        "Amazing collection of Perfect Grade kits. Worth the visit!",
-        "Great prices and excellent customer service. My go-to store for all things Gundam."
-      ],
-      "logo": "MW"
-    },
-    {
-      "name": "Anime Central",
-      "location": "Birmingham",
-      "address": "789 New Street, Birmingham, B2 4BA",
-      "coordinates": [52.4862, -1.8904],
-      "website": "https://www.animecentral.co.uk",
-      "types": ["HG", "RG"],
-      "inStore": true,
-      "online": false,
-      "rating": 4.1,
-      "reviewCount": 67,
-      "reviews": [
-        "Good selection of High Grade and Real Grade kits. Friendly staff.",
-        "Nice local store for anime and Gundam fans. Prices are reasonable.",
-        "Small but well-stocked store. Great for beginners."
-      ],
-      "logo": "AC"
-    },
-    {
-      "name": "Gunpla Express",
-      "location": "Online Only",
-      "address": "Online Store",
-      "coordinates": [51.4543, -2.5879],
-      "website": "https://www.gunplaexpress.co.uk",
-      "types": ["HG", "MG", "PG"],
-      "inStore": false,
-      "online": true,
-      "rating": 4.5,
-      "reviewCount": 134,
-      "reviews": [
-        "Excellent online store with fast shipping and great prices.",
-        "Huge selection of Master Grade kits. Highly recommended!",
-        "Reliable service and good communication. Perfect for online shopping."
-      ],
-      "logo": "GE"
-    },
-    {
-      "name": "Model Masters",
-      "location": "Edinburgh",
-      "address": "321 Princes Street, Edinburgh, EH2 4BG",
-      "coordinates": [55.9533, -3.1883],
-      "website": "https://www.modelmasters.co.uk",
-      "types": ["HG", "RG", "MG"],
-      "inStore": true,
-      "online": true,
-      "rating": 4.6,
-      "reviewCount": 98,
-      "reviews": [
-        "Fantastic store in Edinburgh! Great selection and knowledgeable staff.",
-        "Excellent prices and good variety of kits. Highly recommend!",
-        "Best model shop in Scotland. Great for both beginners and experts."
-      ],
-      "logo": "MM"
-    },
-    {
-      "name": "Gundam Galaxy",
-      "location": "Liverpool",
-      "address": "567 Bold Street, Liverpool, L1 4EU",
-      "coordinates": [53.4084, -2.9916],
-      "website": "https://www.gundamgalaxy.co.uk",
-      "types": ["HG", "RG", "MG", "PG"],
-      "inStore": true,
-      "online": true,
-      "rating": 4.9,
-      "reviewCount": 187,
-      "reviews": [
-        "Absolutely incredible store! The largest Gundam collection I've ever seen.",
-        "Staff are incredibly helpful and knowledgeable about every kit.",
-        "Perfect Grade heaven! They have kits I've never seen anywhere else."
-      ],
-      "logo": "GG"
-    },
-    {
-      "name": "Plastic Paradise",
-      "location": "Bristol",
-      "address": "234 Park Street, Bristol, BS1 5JN",
-      "coordinates": [51.4545, -2.5879],
-      "website": "https://www.plasticparadise.co.uk",
-      "types": ["HG", "RG"],
-      "inStore": true,
-      "online": false,
-      "rating": 4.2,
-      "reviewCount": 73,
-      "reviews": [
-        "Great local store with friendly atmosphere. Good for beginners.",
-        "Nice selection of High Grade kits at reasonable prices.",
-        "Small but well-organized store. Staff are very helpful."
-      ],
-      "logo": "PP"
-    },
-    {
-      "name": "Mecha Mart",
-      "location": "Leeds",
-      "address": "890 Briggate, Leeds, LS1 6NP",
-      "coordinates": [53.8008, -1.5491],
-      "website": "https://www.mechamart.co.uk",
-      "types": ["HG", "RG", "MG"],
-      "inStore": true,
-      "online": true,
-      "rating": 4.4,
-      "reviewCount": 112,
-      "reviews": [
-        "Good selection of kits and competitive prices. Worth a visit!",
-        "Friendly staff and clean store. Great for model enthusiasts.",
-        "Regular restocks and good variety of Real Grade models."
-      ],
-      "logo": "MM"
-    },
-    {
-      "name": "Gunpla Direct",
-      "location": "Online Only",
-      "address": "Online Store",
-      "coordinates": [51.7520, -1.2577],
-      "website": "https://www.gunpladirect.co.uk",
-      "types": ["HG", "MG", "PG"],
-      "inStore": false,
-      "online": true,
-      "rating": 4.6,
-      "reviewCount": 245,
-      "reviews": [
-        "Fastest shipping I've ever experienced! Great customer service.",
-        "Excellent prices and huge selection. My go-to online store.",
-        "Perfect packaging and reliable delivery. Highly recommended!"
-      ],
-      "logo": "GD"
-    },
-    {
-      "name": "Anime Haven",
-      "location": "Cardiff",
-      "address": "123 Queen Street, Cardiff, CF10 2GQ",
-      "coordinates": [51.4816, -3.1791],
-      "website": "https://www.animehaven.co.uk",
-      "types": ["HG", "RG"],
-      "inStore": true,
-      "online": false,
-      "rating": 3.9,
-      "reviewCount": 45,
-      "reviews": [
-        "Decent selection for a smaller store. Good for basic kits.",
-        "Prices are okay but selection is limited.",
-        "Friendly staff but could use more variety in stock."
-      ],
-      "logo": "AH"
-    },
-    {
-      "name": "Model Universe",
-      "location": "Glasgow",
-      "address": "456 Sauchiehall Street, Glasgow, G2 3JD",
-      "coordinates": [55.8642, -4.2518],
-      "website": "https://www.modeluniverse.co.uk",
-      "types": ["HG", "RG", "MG", "PG"],
-      "inStore": true,
-      "online": true,
-      "rating": 4.7,
-      "reviewCount": 156,
-      "reviews": [
-        "Amazing store in Glasgow! Huge selection and expert staff.",
-        "Best model shop in Scotland. Great prices and variety.",
-        "Excellent customer service and knowledgeable team."
-      ],
-      "logo": "MU"
-    },
-    {
-      "name": "Gundam Central",
-      "location": "Newcastle",
-      "address": "789 Northumberland Street, Newcastle, NE1 7AF",
-      "coordinates": [54.9783, -1.6178],
-      "website": "https://www.gundamcentral.co.uk",
-      "types": ["HG", "RG", "MG"],
-      "inStore": true,
-      "online": true,
-      "rating": 4.3,
-      "reviewCount": 89,
-      "reviews": [
-        "Good store with decent selection. Staff are helpful.",
-        "Nice local option for Gundam fans in the North East.",
-        "Competitive prices and regular stock updates."
-      ],
-      "logo": "GC"
-    },
-    {
-      "name": "Plastic Warriors",
-      "location": "Online Only",
-      "address": "Online Store",
-      "coordinates": [52.2053, 0.1218],
-      "website": "https://www.plasticwarriors.co.uk",
-      "types": ["HG", "MG"],
-      "inStore": false,
-      "online": true,
-      "rating": 4.1,
-      "reviewCount": 67,
-      "reviews": [
-        "Reliable online store with good prices.",
-        "Fast delivery and good packaging.",
-        "Decent selection but could be better."
-      ],
-      "logo": "PW"
-    },
-    {
-      "name": "Mecha Models",
-      "location": "Sheffield",
-      "address": "321 Fargate, Sheffield, S1 2JA",
-      "coordinates": [53.3811, -1.4701],
-      "website": "https://www.mechamodels.co.uk",
-      "types": ["HG", "RG"],
-      "inStore": true,
-      "online": false,
-      "rating": 4.0,
-      "reviewCount": 52,
-      "reviews": [
-        "Small but well-stocked store. Good for local collectors.",
-        "Friendly staff and reasonable prices.",
-        "Limited selection but what they have is good quality."
-      ],
-      "logo": "MM"
-    },
-    {
-      "name": "Gundam Express",
-      "location": "Online Only",
-      "address": "Online Store",
-      "coordinates": [53.4084, -2.9916],
-      "website": "https://www.gundamexpress.co.uk",
-      "types": ["HG", "RG", "MG", "PG"],
-      "inStore": false,
-      "online": true,
-      "rating": 4.8,
-      "reviewCount": 198,
-      "reviews": [
-        "Excellent online store with amazing selection!",
-        "Fast shipping and great customer service.",
-        "Best prices I've found online. Highly recommended!"
-      ],
-      "logo": "GE"
-    },
-    {
-      "name": "Anime World",
-      "location": "Nottingham",
-      "address": "567 Lister Gate, Nottingham, NG1 7DF",
-      "coordinates": [52.9548, -1.1581],
-      "website": "https://www.animeworld.co.uk",
-      "types": ["HG", "RG"],
-      "inStore": true,
-      "online": false,
-      "rating": 3.8,
-      "reviewCount": 41,
-      "reviews": [
-        "Basic selection but friendly staff.",
-        "Good for beginners looking for simple kits.",
-        "Prices are reasonable for what they offer."
-      ],
-      "logo": "AW"
-    },
-    {
-      "name": "Model Kingdom",
-      "location": "Aberdeen",
-      "address": "123 Union Street, Aberdeen, AB11 5PH",
-      "coordinates": [57.1497, -2.0943],
-      "website": "https://www.modelkingdom.co.uk",
-      "types": ["HG", "RG", "MG"],
-      "inStore": true,
-      "online": true,
-      "rating": 4.5,
-      "reviewCount": 78,
-      "reviews": [
-        "Great store in Aberdeen! Good selection and helpful staff.",
-        "Best model shop in the area. Worth the visit.",
-        "Excellent prices and knowledgeable team."
-      ],
-      "logo": "MK"
-    },
-    {
-      "name": "Gunpla World",
-      "location": "Online Only",
-      "address": "Online Store",
-      "coordinates": [55.8642, -4.2518],
-      "website": "https://www.gunplaworld.co.uk",
-      "types": ["HG", "RG", "MG", "PG"],
-      "inStore": false,
-      "online": true,
-      "rating": 4.4,
-      "reviewCount": 167,
-      "reviews": [
-        "Great online store with good selection and prices.",
-        "Reliable delivery and good customer service.",
-        "Competitive prices and regular sales."
-      ],
-      "logo": "GW"
-    },
-    {
-      "name": "Plastic Paradise Plus",
-      "location": "Brighton",
-      "address": "456 North Street, Brighton, BN1 1YR",
-      "coordinates": [50.8225, -0.1372],
-      "website": "https://www.plasticparadiseplus.co.uk",
-      "types": ["HG", "RG", "MG"],
-      "inStore": true,
-      "online": false,
-      "rating": 4.2,
-      "reviewCount": 63,
-      "reviews": [
-        "Nice store with good atmosphere. Decent selection.",
-        "Friendly staff and reasonable prices.",
-        "Good for local collectors and beginners."
-      ],
-      "logo": "PP"
-    }
-  ]
-  
+  {
+    "name": "Japan Craft",
+    "location": "London",
+    "address": "123 Oxford Street, London, W1D 1BS",
+    "coordinates": [
+      51.5074,
+      -0.1278
+    ],
+    "website": "https://www.japancraft.co.uk",
+    "types": [
+      "HG",
+      "MG",
+      "PG"
+    ],
+    "inStore": true,
+    "online": true,
+    "rating": 4.7,
+    "reviewCount": 156,
+    "reviews": [
+      {
+        "text": "Excellent selection of Gundam kits, especially the Master Grade models. Staff are very knowledgeable!",
+        "rating": 5,
+        "author": "Alex Smith",
+        "source": "Customer"
+      },
+      {
+        "text": "Great prices and fast shipping. Highly recommend for any Gundam enthusiast.",
+        "rating": 5,
+        "author": "Sam Lee",
+        "source": "Customer"
+      },
+      {
+        "text": "Amazing store with rare kits. The Perfect Grade collection is impressive.",
+        "rating": 4,
+        "author": "Priya Patel",
+        "source": "Customer"
+      }
+    ],
+    "logo": "JC"
+  },
+  {
+    "name": "Gundam Mad",
+    "location": "Online Only",
+    "address": "Online Store",
+    "coordinates": [
+      52.3555,
+      -1.1743
+    ],
+    "website": "https://www.gundammad.co.uk",
+    "types": [
+      "HG",
+      "RG",
+      "MG"
+    ],
+    "inStore": false,
+    "online": true,
+    "rating": 4.3,
+    "reviewCount": 89,
+    "reviews": [
+      {
+        "text": "Fast delivery and good customer service. Great for beginners with HG kits.",
+        "rating": 4,
+        "author": "Emily Chen",
+        "source": "Customer"
+      },
+      {
+        "text": "Competitive prices and regular sales. Good selection of Real Grade models.",
+        "rating": 5,
+        "author": "Tom Brown",
+        "source": "Customer"
+      },
+      {
+        "text": "Reliable online store with good packaging to protect the kits.",
+        "rating": 4,
+        "author": "Rachel Green",
+        "source": "Customer"
+      }
+    ],
+    "logo": "GM"
+  },
+  {
+    "name": "Mecha World",
+    "location": "Manchester",
+    "address": "456 Deansgate, Manchester, M3 2FF",
+    "coordinates": [
+      53.4808,
+      -2.2426
+    ],
+    "website": "https://www.mechaworld.co.uk",
+    "types": [
+      "HG",
+      "RG",
+      "MG",
+      "PG"
+    ],
+    "inStore": true,
+    "online": true,
+    "rating": 4.8,
+    "reviewCount": 203,
+    "reviews": [
+      {
+        "text": "Best Gundam store in Manchester! Huge selection and expert staff.",
+        "rating": 5,
+        "author": "James Wilson",
+        "source": "Customer"
+      },
+      {
+        "text": "Amazing collection of Perfect Grade kits. Worth the visit!",
+        "rating": 5,
+        "author": "Sophie Turner",
+        "source": "Customer"
+      },
+      {
+        "text": "Great prices and excellent customer service. My go-to store for all things Gundam.",
+        "rating": 4,
+        "author": "Mohammed Ali",
+        "source": "Customer"
+      }
+    ],
+    "logo": "MW"
+  },
+  {
+    "name": "Anime Central",
+    "location": "Birmingham",
+    "address": "789 New Street, Birmingham, B2 4BA",
+    "coordinates": [
+      52.4862,
+      -1.8904
+    ],
+    "website": "https://www.animecentral.co.uk",
+    "types": [
+      "HG",
+      "RG"
+    ],
+    "inStore": true,
+    "online": false,
+    "rating": 4.1,
+    "reviewCount": 67,
+    "reviews": [
+      {
+        "text": "Good selection of High Grade and Real Grade kits. Friendly staff.",
+        "rating": 4,
+        "author": "Lucy Evans",
+        "source": "Customer"
+      },
+      {
+        "text": "Nice local store for anime and Gundam fans. Prices are reasonable.",
+        "rating": 4,
+        "author": "Ben Carter",
+        "source": "Customer"
+      },
+      {
+        "text": "Small but well-stocked store. Great for beginners.",
+        "rating": 3,
+        "author": "Hannah White",
+        "source": "Customer"
+      }
+    ],
+    "logo": "AC"
+  },
+  {
+    "name": "Gunpla Express",
+    "location": "Online Only",
+    "address": "Online Store",
+    "coordinates": [
+      51.4543,
+      -2.5879
+    ],
+    "website": "https://www.gunplaexpress.co.uk",
+    "types": [
+      "HG",
+      "MG",
+      "PG"
+    ],
+    "inStore": false,
+    "online": true,
+    "rating": 4.5,
+    "reviewCount": 134,
+    "reviews": [
+      {
+        "text": "Excellent online store with fast shipping and great prices.",
+        "rating": 5,
+        "author": "Oliver King",
+        "source": "Customer"
+      },
+      {
+        "text": "Huge selection of Master Grade kits. Highly recommended!",
+        "rating": 5,
+        "author": "Grace Hall",
+        "source": "Customer"
+      },
+      {
+        "text": "Reliable service and good communication. Perfect for online shopping.",
+        "rating": 4,
+        "author": "Jack Scott",
+        "source": "Customer"
+      }
+    ],
+    "logo": "GE"
+  },
+  {
+    "name": "Model Masters",
+    "location": "Edinburgh",
+    "address": "321 Princes Street, Edinburgh, EH2 4BG",
+    "coordinates": [
+      55.9533,
+      -3.1883
+    ],
+    "website": "https://www.modelmasters.co.uk",
+    "types": [
+      "HG",
+      "RG",
+      "MG"
+    ],
+    "inStore": true,
+    "online": true,
+    "rating": 4.6,
+    "reviewCount": 98,
+    "reviews": [
+      {
+        "text": "Fantastic store in Edinburgh! Great selection and knowledgeable staff.",
+        "rating": 5,
+        "author": "Megan Brown",
+        "source": "Customer"
+      },
+      {
+        "text": "Excellent prices and good variety of kits. Highly recommend!",
+        "rating": 4,
+        "author": "Daniel Reed",
+        "source": "Customer"
+      },
+      {
+        "text": "Best model shop in Scotland. Great for both beginners and experts.",
+        "rating": 5,
+        "author": "Chloe Adams",
+        "source": "Customer"
+      }
+    ],
+    "logo": "MM"
+  },
+  {
+    "name": "Gundam Galaxy",
+    "location": "Liverpool",
+    "address": "567 Bold Street, Liverpool, L1 4EU",
+    "coordinates": [
+      53.4084,
+      -2.9916
+    ],
+    "website": "https://www.gundamgalaxy.co.uk",
+    "types": [
+      "HG",
+      "RG",
+      "MG",
+      "PG"
+    ],
+    "inStore": true,
+    "online": true,
+    "rating": 4.9,
+    "reviewCount": 187,
+    "reviews": [
+      "Absolutely incredible store! The largest Gundam collection I've ever seen.",
+      "Staff are incredibly helpful and knowledgeable about every kit.",
+      "Perfect Grade heaven! They have kits I've never seen anywhere else."
+    ],
+    "logo": "GG"
+  },
+  {
+    "name": "Plastic Paradise",
+    "location": "Bristol",
+    "address": "234 Park Street, Bristol, BS1 5JN",
+    "coordinates": [
+      51.4545,
+      -2.5879
+    ],
+    "website": "https://www.plasticparadise.co.uk",
+    "types": [
+      "HG",
+      "RG"
+    ],
+    "inStore": true,
+    "online": false,
+    "rating": 4.2,
+    "reviewCount": 73,
+    "reviews": [
+      "Great local store with friendly atmosphere. Good for beginners.",
+      "Nice selection of High Grade kits at reasonable prices.",
+      "Small but well-organized store. Staff are very helpful."
+    ],
+    "logo": "PP"
+  },
+  {
+    "name": "Mecha Mart",
+    "location": "Leeds",
+    "address": "890 Briggate, Leeds, LS1 6NP",
+    "coordinates": [
+      53.8008,
+      -1.5491
+    ],
+    "website": "https://www.mechamart.co.uk",
+    "types": [
+      "HG",
+      "RG",
+      "MG"
+    ],
+    "inStore": true,
+    "online": true,
+    "rating": 4.4,
+    "reviewCount": 112,
+    "reviews": [
+      "Good selection of kits and competitive prices. Worth a visit!",
+      "Friendly staff and clean store. Great for model enthusiasts.",
+      "Regular restocks and good variety of Real Grade models."
+    ],
+    "logo": "MM"
+  },
+  {
+    "name": "Gunpla Direct",
+    "location": "Online Only",
+    "address": "Online Store",
+    "coordinates": [
+      51.752,
+      -1.2577
+    ],
+    "website": "https://www.gunpladirect.co.uk",
+    "types": [
+      "HG",
+      "MG",
+      "PG"
+    ],
+    "inStore": false,
+    "online": true,
+    "rating": 4.6,
+    "reviewCount": 245,
+    "reviews": [
+      "Fastest shipping I've ever experienced! Great customer service.",
+      "Excellent prices and huge selection. My go-to online store.",
+      "Perfect packaging and reliable delivery. Highly recommended!"
+    ],
+    "logo": "GD"
+  },
+  {
+    "name": "Anime Haven",
+    "location": "Cardiff",
+    "address": "123 Queen Street, Cardiff, CF10 2GQ",
+    "coordinates": [
+      51.4816,
+      -3.1791
+    ],
+    "website": "https://www.animehaven.co.uk",
+    "types": [
+      "HG",
+      "RG"
+    ],
+    "inStore": true,
+    "online": false,
+    "rating": 3.9,
+    "reviewCount": 45,
+    "reviews": [
+      "Decent selection for a smaller store. Good for basic kits.",
+      "Prices are okay but selection is limited.",
+      "Friendly staff but could use more variety in stock."
+    ],
+    "logo": "AH"
+  },
+  {
+    "name": "Model Universe",
+    "location": "Glasgow",
+    "address": "456 Sauchiehall Street, Glasgow, G2 3JD",
+    "coordinates": [
+      55.8642,
+      -4.2518
+    ],
+    "website": "https://www.modeluniverse.co.uk",
+    "types": [
+      "HG",
+      "RG",
+      "MG",
+      "PG"
+    ],
+    "inStore": true,
+    "online": true,
+    "rating": 4.7,
+    "reviewCount": 156,
+    "reviews": [
+      "Amazing store in Glasgow! Huge selection and expert staff.",
+      "Best model shop in Scotland. Great prices and variety.",
+      "Excellent customer service and knowledgeable team."
+    ],
+    "logo": "MU"
+  },
+  {
+    "name": "Gundam Central",
+    "location": "Newcastle",
+    "address": "789 Northumberland Street, Newcastle, NE1 7AF",
+    "coordinates": [
+      54.9783,
+      -1.6178
+    ],
+    "website": "https://www.gundamcentral.co.uk",
+    "types": [
+      "HG",
+      "RG",
+      "MG"
+    ],
+    "inStore": true,
+    "online": true,
+    "rating": 4.3,
+    "reviewCount": 89,
+    "reviews": [
+      "Good store with decent selection. Staff are helpful.",
+      "Nice local option for Gundam fans in the North East.",
+      "Competitive prices and regular stock updates."
+    ],
+    "logo": "GC"
+  },
+  {
+    "name": "Plastic Warriors",
+    "location": "Online Only",
+    "address": "Online Store",
+    "coordinates": [
+      52.2053,
+      0.1218
+    ],
+    "website": "https://www.plasticwarriors.co.uk",
+    "types": [
+      "HG",
+      "MG"
+    ],
+    "inStore": false,
+    "online": true,
+    "rating": 4.1,
+    "reviewCount": 67,
+    "reviews": [
+      "Reliable online store with good prices.",
+      "Fast delivery and good packaging.",
+      "Decent selection but could be better."
+    ],
+    "logo": "PW"
+  },
+  {
+    "name": "Mecha Models",
+    "location": "Sheffield",
+    "address": "321 Fargate, Sheffield, S1 2JA",
+    "coordinates": [
+      53.3811,
+      -1.4701
+    ],
+    "website": "https://www.mechamodels.co.uk",
+    "types": [
+      "HG",
+      "RG"
+    ],
+    "inStore": true,
+    "online": false,
+    "rating": 4,
+    "reviewCount": 52,
+    "reviews": [
+      "Small but well-stocked store. Good for local collectors.",
+      "Friendly staff and reasonable prices.",
+      "Limited selection but what they have is good quality."
+    ],
+    "logo": "MM"
+  },
+  {
+    "name": "Gundam Express",
+    "location": "Online Only",
+    "address": "Online Store",
+    "coordinates": [
+      53.4084,
+      -2.9916
+    ],
+    "website": "https://www.gundamexpress.co.uk",
+    "types": [
+      "HG",
+      "RG",
+      "MG",
+      "PG"
+    ],
+    "inStore": false,
+    "online": true,
+    "rating": 4.8,
+    "reviewCount": 198,
+    "reviews": [
+      "Excellent online store with amazing selection!",
+      "Fast shipping and great customer service.",
+      "Best prices I've found online. Highly recommended!"
+    ],
+    "logo": "GE"
+  },
+  {
+    "name": "Anime World",
+    "location": "Nottingham",
+    "address": "567 Lister Gate, Nottingham, NG1 7DF",
+    "coordinates": [
+      52.9548,
+      -1.1581
+    ],
+    "website": "https://www.animeworld.co.uk",
+    "types": [
+      "HG",
+      "RG"
+    ],
+    "inStore": true,
+    "online": false,
+    "rating": 3.8,
+    "reviewCount": 41,
+    "reviews": [
+      "Basic selection but friendly staff.",
+      "Good for beginners looking for simple kits.",
+      "Prices are reasonable for what they offer."
+    ],
+    "logo": "AW"
+  },
+  {
+    "name": "Model Kingdom",
+    "location": "Aberdeen",
+    "address": "123 Union Street, Aberdeen, AB11 5PH",
+    "coordinates": [
+      57.1497,
+      -2.0943
+    ],
+    "website": "https://www.modelkingdom.co.uk",
+    "types": [
+      "HG",
+      "RG",
+      "MG"
+    ],
+    "inStore": true,
+    "online": true,
+    "rating": 4.5,
+    "reviewCount": 78,
+    "reviews": [
+      "Great store in Aberdeen! Good selection and helpful staff.",
+      "Best model shop in the area. Worth the visit.",
+      "Excellent prices and knowledgeable team."
+    ],
+    "logo": "MK"
+  },
+  {
+    "name": "Gunpla World",
+    "location": "Online Only",
+    "address": "Online Store",
+    "coordinates": [
+      55.8642,
+      -4.2518
+    ],
+    "website": "https://www.gunplaworld.co.uk",
+    "types": [
+      "HG",
+      "RG",
+      "MG",
+      "PG"
+    ],
+    "inStore": false,
+    "online": true,
+    "rating": 4.4,
+    "reviewCount": 167,
+    "reviews": [
+      "Great online store with good selection and prices.",
+      "Reliable delivery and good customer service.",
+      "Competitive prices and regular sales."
+    ],
+    "logo": "GW"
+  },
+  {
+    "name": "Plastic Paradise Plus",
+    "location": "Brighton",
+    "address": "456 North Street, Brighton, BN1 1YR",
+    "coordinates": [
+      50.8225,
+      -0.1372
+    ],
+    "website": "https://www.plasticparadiseplus.co.uk",
+    "types": [
+      "HG",
+      "RG",
+      "MG"
+    ],
+    "inStore": true,
+    "online": false,
+    "rating": 4.2,
+    "reviewCount": 63,
+    "reviews": [
+      "Nice store with good atmosphere. Decent selection.",
+      "Friendly staff and reasonable prices.",
+      "Good for local collectors and beginners."
+    ],
+    "logo": "PP"
+  }
+]

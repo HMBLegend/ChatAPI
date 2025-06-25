@@ -4,6 +4,7 @@ let filteredStores = [];
 let map;
 let markers = [];
 let apiBaseUrl = 'http://localhost:3000/api'; // Backend API URL
+let markerMap = {}; // Map store name to marker
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', function() {
@@ -253,6 +254,26 @@ function displayStores() {
   
   filteredStores.forEach(store => {
     const storeElement = createStoreElement(store);
+    // Add click event to focus on map marker
+    storeElement.addEventListener('click', function(e) {
+      if (e.target.tagName === 'BUTTON' || e.target.tagName === 'A') return;
+      focusStoreOnMap(store.name);
+    });
+    // Attach event listeners to buttons
+    const viewBtn = storeElement.querySelector('.view-reviews');
+    if (viewBtn) {
+      viewBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        showReviews(store.name);
+      });
+    }
+    const updateBtn = storeElement.querySelector('.update-reviews');
+    if (updateBtn) {
+      updateBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        updateStoreReviews(store.name);
+      });
+    }
     storeList.appendChild(storeElement);
   });
 }
@@ -300,8 +321,8 @@ function createStoreElement(store) {
     
     <div class="store-actions">
       <a href="${store.website}" target="_blank" class="visit-website">Visit Website</a>
-      <button class="view-reviews" onclick="showReviews('${store.name}')">View Reviews</button>
-      <button class="update-reviews" onclick="updateStoreReviews('${store.name}')">🔄 Update</button>
+      <button class="view-reviews">View Reviews</button>
+      <button class="update-reviews">🔄 Update</button>
     </div>
   `;
   
@@ -411,6 +432,7 @@ function updateMap() {
   // Clear existing markers
   markers.forEach(marker => map.removeLayer(marker));
   markers = [];
+  markerMap = {};
   
   // Add markers for filtered stores
   filteredStores.forEach(store => {
@@ -425,9 +447,9 @@ function updateMap() {
             <a href="${store.website}" target="_blank">Visit Website</a>
           </div>
         `);
-      
       marker.addTo(map);
       markers.push(marker);
+      markerMap[store.name] = marker;
     }
   });
   
@@ -438,7 +460,16 @@ function updateMap() {
   }
 }
 
-// Add CSS for admin panel and enhanced modals
+// Focus on a store's marker on the map and open its popup
+function focusStoreOnMap(storeName) {
+  const marker = markerMap[storeName];
+  if (marker) {
+    map.setView(marker.getLatLng(), 14, { animate: true });
+    marker.openPopup();
+  }
+}
+
+// Add CSS for admin panel, enhanced modals, and robust modal overlay
 const additionalStyles = `
   .admin-panel {
     position: fixed;
@@ -599,9 +630,63 @@ const additionalStyles = `
     font-style: italic;
     padding: 2rem;
   }
+  
+  .view-reviews {
+    background: transparent;
+    color: #667eea;
+    border: 2px solid #667eea;
+    cursor: pointer;
+  }
+  
+  .view-reviews:hover {
+    background: #667eea;
+    color: white;
+  }
+
+  /* Modal overlay styles */
+  .reviews-modal {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+  }
+  .modal-content {
+    position: relative;
+    background: white;
+    border-radius: 12px;
+    max-width: 600px;
+    width: 90vw;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    padding: 2rem;
+  }
+  .close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #6c757d;
+    z-index: 10001;
+  }
+  .close-modal:hover {
+    background: #e9ecef;
+  }
 `;
 
 // Inject additional styles
 const additionalStyleSheet = document.createElement('style');
 additionalStyleSheet.textContent = additionalStyles;
 document.head.appendChild(additionalStyleSheet);
+
+window.showReviews = showReviews;
+window.updateStoreReviews = updateStoreReviews;
+
+alert('Script loaded!');
